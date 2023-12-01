@@ -23,12 +23,18 @@ class _AddEvent2State extends State<AddEvent2> {
 
   Future<void> postDataToUrl() async {
     // Replace with the URL where you want to post the data
-    final url = ApiConfig.baseUrl+'feed/'+'praj2k2';
+    final url = ApiConfig.baseUrl+'event/';
 
     final Map<String, dynamic> eventData = {
+      'userID':"praj2k2",
+      "link":"https://images.unsplash.com/photo-1698414461871-a01e73316c2a?auto=format&fit=crop&q=60&w=600&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1fHx8ZW58MHx8fHx8",
+      'content':"A dialog is a type of modal window that appears in front of app content to provide critical information, or prompt for a decision to be made.",
+      'description':"A dialog is a type of modal window that appears in front of app content to provide critical information, or prompt for a decision to be made.",
+'maxNumbers':"5",
+      'type':"Online",
       'name': _eventNameController.text,
       'eventType': _eventTypeController.text,
-      'startDate': _startDateController.text,
+      // 'date': "2006-01-02T15:04:05Z0",
       'endDate': _endDateController.text,
       'registrationDeadline': _registrationDeadlineController.text,
       'eventPrizePool': _eventPrizePoolController.text,
@@ -39,12 +45,12 @@ class _AddEvent2State extends State<AddEvent2> {
       body: eventData,
     );
 
-    if (response.statusCode == 200) {
-      // Data successfully posted
+    if (response.statusCode == 201) {
+      Navigator.of(context).pushNamed('/');
       print('Data posted successfully');
     } else {
       // Handle the error or provide appropriate feedback
-      print('Failed to post data. Status code: ${response.statusCode}');
+      print('Failed to post data. Status code: ${response.body}');
     }
   }
 

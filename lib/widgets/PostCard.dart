@@ -370,7 +370,7 @@ class _InstagramPostState extends State<InstagramPost> {
   );
 
   if (response.statusCode == 201) {
-
+    Navigator.of(context).pushNamed('/');
   } else {
     // Handle the error or provide appropriate feedback
     print('Failed to post data. Status code: ${response.body}');
